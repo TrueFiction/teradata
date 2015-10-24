@@ -44,8 +44,8 @@ $(document).ready(function () {
                 "country_name": "Algeria",
                 "total": 99,
                 "ranking": 1
-        }
-    }
+            }
+      }
   }
 
   var countries = [];
@@ -54,9 +54,9 @@ $(document).ready(function () {
       if (json.hasOwnProperty(key)) {
           var item = json[key];
           countries.push({
-              ItemName: item.data.ranking 
+              Rank: item.data.ranking 
               ItemName: item.data.country_name
-              ItemName: item.data.total
+              Total: item.data.total
           });
       }
   }
@@ -65,9 +65,9 @@ $(document).ready(function () {
 
   for (var i = 0; i < countries.length; i++) {
       tr = $('<tr/>');
+      tr.append("<td>" + countries[i].Rank + "</td>");
       tr.append("<td>" + countries[i].ItemName + "</td>");
-      tr.append("<td>" + countries[i].ItemName + "</td>");
-      tr.append("<td>" + countries[i].ItemName + "</td>");
+      tr.append("<td>" + countries[i].Total + "</td>");
 
       $('table').append(tr);
   }
