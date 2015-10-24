@@ -20,17 +20,17 @@
     General Ranking: 
   </div>
 
-  <table style="width:100%">
+  <table id="displayTable" style="width:100%">
     <tr>
         <th>Ranking</th>
         <th>Country Name</th>
         <th>Total Score</th>
     </tr>
-    <tr>
+    <!--tr>
         <td>1</td>
         <td>Algeria</td>
         <td>97.4</td>
-    </tr>
+    </tr-->
   </table>
 </div>
 
@@ -39,7 +39,6 @@
 $(document).ready(function () {
   var json = {
       "205100": {
-        "success": true,
             "data": {
                 "country_name": "Algeria",
                 "total": 99,
@@ -61,15 +60,16 @@ $(document).ready(function () {
       }
   }
 
-  var tr;
+  var table = document.getElementById("displayTable");
 
   for (var i = 0; i < countries.length; i++) {
-      tr = $('<tr/>');
-      tr.append("<td>" + countries[i].Rank + "</td>");
-      tr.append("<td>" + countries[i].ItemName + "</td>");
-      tr.append("<td>" + countries[i].Total + "</td>");
-
-      $('table').append(tr);
+      var row = table.insertRow(i);
+      var cell1 = row.insertCell(0);
+      cell1.innerHTML = countries[i].Rank;
+      var cell2 = row.insertCell(0);
+      cell2.innerHTML = countries[i].ItemName;
+      var cell3 = row.insertCell(0);
+      cell3.innerHTML = countries[i].Total;
   }
 });
 </script>
