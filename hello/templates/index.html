@@ -33,4 +33,44 @@
     </tr>
   </table>
 </div>
+
+<script>
+/* display general data */
+$(document).ready(function () {
+  var json = {
+      "205100": {
+        "success": true,
+            "data": {
+                "country_name": "Algeria",
+                "total": 99,
+                "ranking": 1
+        }
+    }
+  }
+
+  var countries = [];
+
+  for (var key in json) {
+      if (json.hasOwnProperty(key)) {
+          var item = json[key];
+          countries.push({
+              ItemName: item.data.ranking 
+              ItemName: item.data.country_name
+              ItemName: item.data.total
+          });
+      }
+  }
+
+  var tr;
+
+  for (var i = 0; i < countries.length; i++) {
+      tr = $('<tr/>');
+      tr.append("<td>" + countries[i].ItemName + "</td>");
+      tr.append("<td>" + countries[i].ItemName + "</td>");
+      tr.append("<td>" + countries[i].ItemName + "</td>");
+
+      $('table').append(tr);
+  }
+});
+</script>
 {% endblock %}
